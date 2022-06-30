@@ -10,3 +10,15 @@ class Solution:
                     return True
                 
             return False    
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        fast,slow = head,head
+        while(fast != None and fast.next != None):
+            fast = fast.next.next
+            slow =slow.next 
+            if(fast == slow ):
+                current = head
+                while(current != slow ):
+                    current = current.next
+                    slow = slow.next 
+                return slow
+        return None   
