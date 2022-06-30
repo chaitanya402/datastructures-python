@@ -1,16 +1,12 @@
-    def iterate(data):
-        firstPointer = data
-        if(data == None):
-            return False
-        nextPointer = data.next
-        while(1):
-
-            print(firstPointer,nextPointer)
-            if(firstPointer.next == None):
-                return False
-            else:
-                if(firstPointer == nextPointer):
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+         
+            fast = head 
+            slow = head
+            while(fast != None and fast.next != None):
+                fast = fast.next.next
+                slow = slow.next
+                if(slow == fast ):
                     return True
-
-            firstPointer = firstPointer.next.next
-            nextPointer = nextPointer.next
+                
+            return False    
