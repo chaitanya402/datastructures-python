@@ -32,19 +32,7 @@ class Solution:
                 h1 = headB
             else:
                 h1 = h1.next
-                
-                
-    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        prev = None
-        curr = head 
-        
-        while(curr):  
-          nex = curr.next
-          curr.next = prev
-          prev = curr
-          curr = nex
-        
-        return prev                
+                           
             
             if(not h2):
                 h2 = headA
@@ -64,4 +52,18 @@ class Solution:
             fast = fast.next
             slow = slow.next
         slow.next = slow.next.next
-        return head        
+        return head   
+        
+        
+        
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        prev = None
+        curr = head 
+        
+        while(curr):  
+          nex = curr.next
+          curr.next = prev
+          prev = curr
+          curr = nex
+        
+        return prev            
