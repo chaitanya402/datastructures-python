@@ -136,3 +136,47 @@ class Solution:
             ref.next = list1
         return resultList
     
+        def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+            resultList = ListNode()
+            res = resultList
+            if(l1 is None and l2 is None):
+                return res.next
+            if(l1 is None ):
+                return l2
+            if(l2 is None):
+                return l1
+
+            sum = 0 
+            sum = l1.val + l2.val 
+            carry = sum // 10 
+            l1 = l1.next 
+            l2 = l2.next 
+            res = ListNode(sum % 10,None )
+            resultList = res
+
+
+            while(l1 and l2):
+                sum = l1.val + l2.val + carry 
+                l1 = l1.next
+                l2 = l2.next
+                res.next = ListNode(sum % 10,None)
+                res = res.next
+                carry = sum // 10 
+
+            while(l1):
+                sum = l1.val + carry 
+                l1 = l1.next
+                res.next = ListNode(sum % 10,None)
+                res = res.next
+                carry = sum // 10 
+
+            while(l2):
+                sum = l2.val + carry 
+                l2 = l2.next
+                carry = sum // 10 
+                res.next = ListNode(sum % 10,None) 
+                res = res.next
+
+            if (carry > 0 ):
+                res.next = ListNode(carry,None)
+            return resultList
