@@ -162,6 +162,10 @@ class Solution:
                 res.next = ListNode(sum % 10,None)
                 res = res.next
                 carry = sum // 10 
+                
+                
+                
+                
 
             while(l1):
                 sum = l1.val + carry 
@@ -180,3 +184,23 @@ class Solution:
             if (carry > 0 ):
                 res.next = ListNode(carry,None)
             return resultList
+        
+        
+        
+    def flatten(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        
+        dummy = Node(0)
+        if head is None: return dummy.next
+        
+        
+        cur,stack = dummy, [head]
+        while(stack):
+            temp = stack.pop()
+            if temp.next : stack.append(temp.next)
+            if temp.child : stack.append(temp.child)
+            cur.next = temp
+            temp.prev = cur
+            temp.child = None
+            cur = temp
+        dummy.next.prev = None
+        return dummy.next 
