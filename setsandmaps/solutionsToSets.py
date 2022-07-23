@@ -90,3 +90,19 @@ class Solution:
                     pass
             prevValue = common[key]
         return result
+
+    def firstUniqChar(self, s: str) -> int:
+        result = {}
+        unique = set()
+
+        for idx, i in enumerate(s):
+            if i not in result:
+                result[i] = idx
+                unique.add(i)
+            else:
+                if i in unique: unique.remove(i)
+
+        for i in result:
+            if i in unique: return result[i]
+
+        return -1
