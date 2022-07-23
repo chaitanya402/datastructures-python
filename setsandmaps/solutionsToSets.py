@@ -63,3 +63,30 @@ class Solution:
 
         print(result)
         return True
+
+    def findRestaurant(self, list1: List[str], list2: List[str]) -> List[str]:
+        resultList = {}
+        common = {}
+        result = [-1]
+
+        for idx, i in enumerate(list1):
+            resultList[i] = idx
+
+        for idx, i in enumerate(list2):
+            if i in resultList:
+                common[i] = resultList[i] + idx
+
+        prevValue = -1
+        for key in common:
+            if (prevValue == -1):
+                result = [key]
+            else:
+                if (prevValue > common[key]):
+                    result = []
+                    result.append(key)
+                elif (prevValue == common[key]):
+                    result.append(key)
+                else:
+                    pass
+            prevValue = common[key]
+        return result
