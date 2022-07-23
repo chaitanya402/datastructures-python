@@ -48,3 +48,18 @@ class Solution:
             results[i] = {lookout: idx}
 
         return []
+
+    def isIsomorphic(self, s: str, t: str) -> bool:
+        result = {}
+        uniqueValues = set()
+
+        for idx, i in enumerate(s):
+            if i not in result:
+                if t[idx] in uniqueValues: return False
+                result[i] = t[idx]
+                uniqueValues.add(t[idx])
+            else:
+                if result[i] != t[idx]: return False
+
+        print(result)
+        return True
