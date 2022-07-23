@@ -227,3 +227,52 @@ class Solution:
             cur = cur.next
             new = new.next
         return dummy.next  
+    #to obtain in constant space 
+      def copyRandomList_constspace(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        
+#         dummy = new = Node(0)
+#         cur = head
+#         old_new = {}
+#         while(cur):
+#             new.next = Node(cur.val)
+#             old_new[cur] = new.next
+#             new = new.next
+#             cur = cur.next
+            
+#         cur = head
+#         new = dummy.next
+#         while(cur):
+#             if cur.random : new.random = old_new[cur.random]
+#             cur = cur.next
+#             new = new.next
+#         return dummy.next
+
+
+          cur = head
+          dummy = Node(0)
+          dummy.next = head
+          while(cur):
+            temp = Node(cur.val)
+            temp.next = cur.next
+            cur.next = temp
+            cur = temp.next
+            
+            
+          cur = head
+          while(cur):
+                if(cur.random): cur.next.random = cur.random.next
+                cur = cur.next.next    
+
+ 
+            
+            
+          cur = dummy
+          old = head
+          while(old):
+            cur.next = old.next
+            cur = old    
+            old = cur.next
+
+            
+
+          return dummy.next
