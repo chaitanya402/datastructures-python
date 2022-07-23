@@ -1,4 +1,17 @@
 class Solution:
+    def printNode(self,head):
+        prev = ""
+        prevObjVal = ""
+        random = ""
+        randomObjVal = ""
+        
+        while(head):
+            prev = prev + " " + f"{head.val}"
+            prevObjVal = prevObjVal + " " + f"{head}"
+            head = head.next
+            
+            
+        print(prev)    
     def hasCycle(self, head: Optional[ListNode]) -> bool:
          
             fast = head 
@@ -276,3 +289,27 @@ class Solution:
             
 
           return dummy.next
+
+    def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        if(not head or not head.next) : return head
+        cur = head
+        itr = 0
+        while(cur.next):
+            cur = cur.next
+            itr = itr + 1
+        
+        N = itr+1
+        
+        cur.next = head  #made it a circular linked list 
+        
+        cur = head
+        itr = 1 
+        while(cur):
+            if(itr == (N-k%N)):
+                temp = cur.next
+                cur.next = None
+                head = temp
+                break    
+            cur = cur.next
+            itr = itr+1
+        return head    
