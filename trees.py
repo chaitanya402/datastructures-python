@@ -1,4 +1,4 @@
-# binary search tree implementation 
+# binary search tree implementation
 class Node:
 
     def __init__(self,data):

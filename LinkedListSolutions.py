@@ -1,4 +1,27 @@
+from typing import Optional
+
+class ListNode:
+    def __init__(self,val,next):
+        self.val = val
+        self.next = next
+
+class Node:
+    def __init__(self,val,next):
+        self.val = val
+        self.next = next
+
+
 class Solution:
+
+    """
+    Use of Optional Python3
+    Optional[...] is a shorthand notation for Union[..., None], telling the type checker that either an object of the specific type is required, or None is required. ... stands for any valid type hint, including complex compound types or a Union[] of more types. Whenever you have a keyword argument with default value None, you should use Optional. (Note: If you are targeting Python 3.10 or newer, PEP 604 introduced a better syntax, see below).
+
+So for your two examples, you have dict and list container types, but the default value for the a keyword argument shows that None is permitted too so use Optional[...]:
+
+
+    """
+
     def printNode(self,head):
         prev = ""
         prevObjVal = ""
@@ -89,14 +112,14 @@ class Solution:
         odd , oddhead = head,head
         even , evenhead = head.next , head.next
         while(even != None and even.next != None):
-         odd.next = even.next
-         odd = odd.next
-         even.next = odd.next
-         even = even.next
+          odd.next = even.next
+          odd = odd.next
+          even.next = odd.next
+          even = even.next
         odd.next = evenhead
-        return oddhead    
+        return oddhead
         
-     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
         fast = head
         slow = head
         while(fast and fast.next):
@@ -149,7 +172,7 @@ class Solution:
             ref.next = list1
         return resultList
     
-        def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
             resultList = ListNode()
             res = resultList
             if(l1 is None and l2 is None):
@@ -241,7 +264,7 @@ class Solution:
             new = new.next
         return dummy.next  
     #to obtain in constant space 
-      def copyRandomList_constspace(self, head: 'Optional[Node]') -> 'Optional[Node]':
+    def copyRandomList_constspace(self, head: 'Optional[Node]') -> 'Optional[Node]':
         
 #         dummy = new = Node(0)
 #         cur = head
