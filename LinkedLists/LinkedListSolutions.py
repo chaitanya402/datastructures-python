@@ -15,9 +15,12 @@ class Solution:
 
     """
     Use of Optional Python3
-    Optional[...] is a shorthand notation for Union[..., None], telling the type checker that either an object of the specific type is required, or None is required. ... stands for any valid type hint, including complex compound types or a Union[] of more types. Whenever you have a keyword argument with default value None, you should use Optional. (Note: If you are targeting Python 3.10 or newer, PEP 604 introduced a better syntax, see below).
-
-So for your two examples, you have dict and list container types, but the default value for the a keyword argument shows that None is permitted too so use Optional[...]:
+    Optional[...] is a shorthand notation for Union[..., None],
+    telling the type checker that either an object of the specific type is required,
+    or None is required. ... stands for any valid type hint, including complex compound types or a Union[] of more types.
+    Whenever you have a keyword argument with default value None, you should use Optional.
+    (Note: If you are targeting Python 3.10 or newer, PEP 604 introduced a better syntax, see below).
+    So for your two examples, you have dict and list container types, but the default value for the a keyword argument shows that None is permitted too so use Optional[...]:
 
 
     """
