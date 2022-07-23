@@ -204,3 +204,26 @@ class Solution:
             cur = temp
         dummy.next.prev = None
         return dummy.next 
+
+    
+    #creating a deep copy of the linked list 
+    #deep copy is copying elements by creating new objects
+    #shallow copy is copying elements by referring to the old objects 
+    def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
+        
+        dummy = new = Node(0)
+        cur = head
+        old_new = {}
+        while(cur):
+            new.next = Node(cur.val)
+            old_new[cur] = new.next
+            new = new.next
+            cur = cur.next
+            
+        cur = head
+        new = dummy.next
+        while(cur):
+            if cur.random : new.random = old_new[cur.random]
+            cur = cur.next
+            new = new.next
+        return dummy.next  
