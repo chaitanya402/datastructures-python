@@ -106,3 +106,18 @@ class Solution:
             if i in unique: return result[i]
 
         return -1
+
+    def containsNearbyDuplicate(self, nums: List[int], k: int) -> bool:
+
+        space = {}
+
+        for idx, i in enumerate(nums):
+            if i not in space:
+                space[i] = idx
+            else:
+                if (abs(idx - space[i]) <= k):
+                    return True
+                else:
+                    space[i] = idx
+
+        return False
