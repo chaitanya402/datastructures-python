@@ -33,3 +33,18 @@ class Solution:
             n = sum
 
         return False
+
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+
+        results = {}
+
+        for idx, i in enumerate(nums):
+            # if i <= target :
+            lookout = target - i
+
+            if lookout in results:
+                return [idx, results[lookout][i]]
+
+            results[i] = {lookout: idx}
+
+        return []
