@@ -121,3 +121,23 @@ class Solution:
                     space[i] = idx
 
         return False
+
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        strDict = {}
+
+        for i in strs:
+            sort = "".join(sorted(list(i)))
+            if sort not in strDict:
+                strDict[sort] = [i]
+            else:
+                strDict[sort].append(i)
+        print(strDict)
+        res = []
+        for i in strDict:
+            res.append(strDict[i])
+        return res
+
+
+sol = Solution()
+
+sol.groupAnagrams(["cab","tin","pew","duh","may","ill","buy","bar","max","doc"])
