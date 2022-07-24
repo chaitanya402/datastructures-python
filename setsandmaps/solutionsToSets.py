@@ -1,4 +1,5 @@
-from typing import List
+from typing import List, Optional
+
 """
 list comprehension :
 
@@ -20,7 +21,11 @@ for x in fruits:
 print(newlist)
 
 """
-
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
 
@@ -217,6 +222,34 @@ class Solution:
                 else:
                     return False
         return True
+
+    def findDuplicateSubtrees(self, root: Optional[TreeNode]) -> List[Optional[TreeNode]]:
+        nodes = {}
+        output = []
+
+        def dfs(node):
+            if (not node): return ''
+            key = f'{node.val},{dfs(node.left)},{dfs(node.right)}'
+            if (key in nodes):
+                nodes[key] = nodes[key] + 1
+            else:
+                nodes[key] = 1
+
+            if nodes[key] == 2:
+                print(key, nodes[key])
+                output.append(node)
+
+            return key
+
+        dfs(root)
+        return output
+
+    def numJewelsInStones(self, jewels: str, stones: str) -> int:
+        jewel = set(jewels)
+        count = 0
+        for stone in stones :
+            if stone in jewel : count = count + 1
+        return count
 sol = Solution()
 
 sol.groupAnagrams(["cab","tin","pew","duh","may","ill","buy","bar","max","doc"])
