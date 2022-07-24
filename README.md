@@ -1,5 +1,12 @@
-This is a test project 
+Course took from :
+https://techdevguide.withgoogle.com/paths/data-structures-and-algorithms/?no-filter=true
+
+big fan to Timothy H Chang (https://www.youtube.com/user/timc3406) , learning alot from him
+
+Extra Content:
 https://practice.geeksforgeeks.org/batch/cp-6/?tab=classes
+
+
 
 Just For Overview
 Git Commnds:
