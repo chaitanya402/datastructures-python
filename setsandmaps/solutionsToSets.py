@@ -284,6 +284,35 @@ class Solution:
             return 0
         else:
             return more
+
+    def fourSumCount(self, nums1: List[int], nums2: List[int], nums3: List[int], nums4: List[int]) -> int:
+
+            sums = {}
+            for i in nums1:
+                for j in nums2:
+                    print(i, j)
+                    if i + j not in sums:
+                        sums[i + j] = 1
+                    else:
+                        sums[i + j] = sums[i + j] + 1
+            count = 0
+            for i in nums3:
+                for j in nums4:
+                    if 0 - (i + j) in sums: count = count + sums[0 - (i + j)]
+
+            return count
+
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        frequencyCount = {}
+        order = []
+        for i in nums:
+            if i not in frequencyCount:
+                frequencyCount[i] = 1
+            else:
+                frequencyCount[i] = frequencyCount[i] + 1
+
+        frequencyCount = sorted(frequencyCount, key=lambda x: frequencyCount[x], reverse=True)
+        return frequencyCount[:k]
 sol = Solution()
 
 sol.groupAnagrams(["cab","tin","pew","duh","may","ill","buy","bar","max","doc"])
