@@ -250,6 +250,40 @@ class Solution:
         for stone in stones :
             if stone in jewel : count = count + 1
         return count
+
+    def lengthOfLongestSubstring(self, s: str) -> int:
+
+        existingchar = set()
+        lengths = {}
+        string = []
+        if (not s): return 0
+        if len(s) == 1: return 1
+
+        for char in s:
+            if (char not in existingchar):
+                existingchar.add(char)
+                string.append(char)
+            else:
+                while (char in string):
+                    popValue = string.pop(0)
+                    existingchar.remove(popValue)
+
+                existingchar.add(char)
+                string.append(char)
+            lengths[len(string)] = ''.join(string)
+
+        more = -1
+        for key in lengths:
+            if more == -1:
+                more = key
+            elif more < key:
+                more = key
+            else:
+                pass
+        if more == -1:
+            return 0
+        else:
+            return more
 sol = Solution()
 
 sol.groupAnagrams(["cab","tin","pew","duh","may","ill","buy","bar","max","doc"])
