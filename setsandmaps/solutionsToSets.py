@@ -1,5 +1,25 @@
 from typing import List
+"""
+list comprehension :
 
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+
+newlist = [x for x in fruits if "a" in x]
+
+print(newlist)
+
+
+is equivalent for 
+fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
+newlist = []
+
+for x in fruits:
+  if "a" in x:
+    newlist.append(x)
+
+print(newlist)
+
+"""
 
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
@@ -111,6 +131,32 @@ class Solution:
 
         space = {}
 
+        """
+        
+        [] -> stack , que 
+        [].pop() --> stack 
+        [].pop(1) --> que
+        list() 
+        set() //hash set 
+        {} //hash map 
+        linked list // class Node cur , next 
+        doubly linked list // class Node cur , next , prev
+        
+        Big O for all
+        map, set , 
+        linked list , 
+        doubly linked list 
+        array 
+        
+        trees - important
+        graph - important - dijkstra algo 
+        heaps - study 
+        
+        
+        
+        
+        """
+
         for idx, i in enumerate(nums):
             if i not in space:
                 space[i] = idx
@@ -137,7 +183,40 @@ class Solution:
             res.append(strDict[i])
         return res
 
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
 
+        N = 9
+
+        # rows
+        for r in range(N):
+            row = [c for c in board[r] if c != '.']
+            if len(row) != len(set(row)): return False
+
+        # columns
+        for c in range(N):
+            col = [board[r][c] for r in range(N) if board[r][c] != '.']
+            if len(col) != len(set(col)): return False
+
+            # blocks
+
+        def helper(R, C):
+            l = set()
+            for r in range(R, R + 3):
+                for c in range(C, C + 3):
+                    if board[r][c] == '.': continue
+                    if board[r][c] not in l:
+                        l.add(board[r][c])
+                    else:
+                        return False
+            return True
+
+        for r in range(0, N, 3):
+            for c in range(0, N, 3):
+                if helper(r, c):
+                    continue
+                else:
+                    return False
+        return True
 sol = Solution()
 
 sol.groupAnagrams(["cab","tin","pew","duh","may","ill","buy","bar","max","doc"])
