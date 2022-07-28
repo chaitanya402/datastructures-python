@@ -40,3 +40,4 @@ class Solution:
                     bfs(r, c)
                     islands = islands + 1
         return islands
+
