@@ -3,7 +3,11 @@ stack : DFS
 Q : BFS
 """
 from typing import List
-
+class Node :
+    def __init__(self,val,next,min):
+        self.val = val
+        self.next = next
+        self.min = min
 
 class Solution:
 
@@ -41,3 +45,44 @@ class Solution:
                     islands = islands + 1
         return islands
 
+    def openLock(self, deadends: List[str], target: str) -> int:
+        # target = '0009'
+        direction = [1, -1]
+        q = [['0000', 0]]
+        visited = set(deadends)
+        if '0000' in visited: return -1
+
+        visited.add('0000')
+
+
+        while q:
+            cur, turns = q.pop(0)
+            if cur == target:
+                return turns
+            for idx, i in enumerate(cur):
+
+                for step in direction:
+                    switch = (int(i) + step) % 10
+                    node = cur[:idx] + f'{switch}' + cur[idx + 1:]
+                    if (node not in visited):
+                        q.append([node, turns + 1])
+                        visited.add(node)
+        return -1
+
+    def isValid(self, s: str) -> bool:
+        closures = {')': '(',
+                    '}': '{',
+                    ']': '['
+                    }
+        stack = []
+
+        for i in s:
+            if not stack or i not in closures:
+                stack.append(i)
+                continue
+            temp = stack.pop()
+            if (closures[i] != temp or i not in closures):
+                stack.append(temp)
+                stack.append(i)
+
+        if (not stack): return True
