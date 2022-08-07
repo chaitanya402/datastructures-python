@@ -86,6 +86,49 @@ class Solution:
                 stack.append(i)
 
         if (not stack): return True
+
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+           stack = []
+           sol = [0 for i in range(len(temperatures))]
+           for idx,i in enumerate(temperatures):
+               if not stack :
+                    stack.append([i,idx])
+                    continue
+               temp,index = stack.pop()
+               stack.append([temp,index])
+               while(temp < i and stack):
+                    sol[index] = idx - index
+                    temp,index = stack.pop()
+               stack.append([temp,index])
+               stack.append([i,idx])
+           return sol
+
+    def evalRPN(self, tokens: List[str]) -> int:
+        stack = []
+
+        for i in tokens:
+            result = None
+            if i == '+':
+                result = int(stack.pop()) + int(stack.pop())
+                stack.append(result)
+                continue
+            elif i == '-':
+                result = -1 * (int(stack.pop()) - int(stack.pop()))
+                stack.append(result)
+                continue
+            elif i == '/':
+                temp = stack.pop()
+                result = int(stack.pop()) / int(temp)
+
+                stack.append(result)
+                continue
+            elif i == '*':
+                result = int(stack.pop()) * int(stack.pop())
+                stack.append(result)
+                continue
+            else:
+                stack.append(i)
+        return (int(stack.pop()))
         
         
         
