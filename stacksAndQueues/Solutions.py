@@ -86,3 +86,32 @@ class Solution:
                 stack.append(i)
 
         if (not stack): return True
+        
+        
+        
+        class Solution:
+            
+            
+    ####dfs using stack        
+    def findTargetSumWays(self, nums: List[int], target: int) -> int:
+           stack = [(-1,0)]
+           directions = ['+','-']
+           sum_of_route  = 0 
+           size =  len(nums) 
+           while(stack):
+               index,sum = stack.pop()
+                
+               index = index + 1               
+
+               if index == size  and sum == target:
+                   sum_of_route = sum_of_route + 1
+               else:
+                  if index < size:
+                   stack.append((index,sum + nums[index]))
+                   stack.append((index,sum - nums[index])) 
+
+                
+                
+                
+           return   sum_of_route   
+        
